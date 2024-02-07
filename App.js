@@ -1,101 +1,65 @@
-import { StatusBar } from "expo-status-bar";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  Alert,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  ImageBackground,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
-const logoImg = require("./assets/Image.png");
-const logo = require("./assets/logo.png");
-export default function App() {
+function App() {
+  let [satate, setSatate] = useState("Hello");
+
+  let handleClike = () => {
+    setSatate("Hello world");
+  };
+
+  const [Enable, setEnable] = useState("courses");
+
   return (
-    <ImageBackground source={logoImg} style={styles.backgroundImage}>
-      <View style={styles.container}>
-        <Image style={styles.image} source={logo} />
-
-        <Text style={styles.quoteText}>
-          ﴿وَنُنَزِّلُ مِنَ القُرآنِ ما هُوَ شِفاءٌ وَرَحمَةٌ لِلمُؤمِنينَ ﴾
+    <View style={styles.container}>
+      <Text style={styles.title}>Mohammed Alsaad, {satate}</Text>
+      <TouchableOpacity
+      style={styles.buttonStyle}
+      onPress={handleClike}
+      >
+        <Text>
+          Change
         </Text>
+      </TouchableOpacity>
 
-        <AppButton
-          title="  تسجيل كزائر   "
-          size="sm"
-          withBorder={true}
-          onPress={() => Alert.alert("Welcome to React Native 🤪")}
-        />
+      <Text style={styles.title}>Your Selection is: </Text>
+      <Text style={styles.selctionTilte}>{Enable}</Text>
 
-        <AppButton
-          title="تسجيل الدخول"
-          size="sm"
-          backgroundColor="#FF8000"
-          onPress={() => Alert.alert("Welcome to React Native 🤪")}
-        />
-        
-      </View>
-    </ImageBackground>
+      <Picker
+        selectedValue={Enable}
+        style={{ height: 100, width: 180 }}
+        mode={"dialog"}
+        onValueChange={(itemValue) => setEnable(itemValue)}
+      >
+        <Picker.Item label="swift" value="swift" />
+        <Picker.Item label="C#" value="C#" />
+        <Picker.Item label="JavaScript" value="JavaScript" />
+      </Picker>
+    </View>
   );
 }
-
-const AppButton = ({ onPress, title, backgroundColor, withBorder }) => (
-  <TouchableOpacity
-    onPress={onPress}
-    style={[
-      styles.appButtonContainer,
-      { backgroundColor: backgroundColor },
-      withBorder && styles.appButtonWithBorder,
-    ]}
-  >
-    <Text style={styles.appButtonText}>{title}</Text>
-  </TouchableOpacity>
-);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 100,
   },
-  image: {
-    width: 100,
-    height: 100,
-    position: "absolute",
-    top: 10,
+  title: {
+    fontSize: 28,
+    fontWeight: 400,
   },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+  selctionTilte: {
+    alignItems: "leading",
+    justifyContent: "leading",
   },
-  quoteText: {
-    fontSize: 18,
-    color: "white",
-    marginBottom: 20,
-    textAlign: "center",
-    marginTop: 120, 
-  },
- 
-  appButtonContainer: {
-    elevation: 8,
-    borderRadius: 8,
-    paddingVertical: 10,
-    paddingHorizontal: 80,
-    marginVertical: 8,
-    borderWidth: 1,
-  },
-  appButtonWithBorder: {
-    borderColor: "#FF8000",
-  },
-  appButtonText: {
-    fontSize: 13,
-    color: "#ffffff",
-    alignSelf: "center",
-    textTransform: "uppercase",
-  },
+  buttonStyle: {
+    padding: 16, 
+    backgroundColor: "blue", 
+    borderRadius: 16,
+  }
 });
+
+export default App;
