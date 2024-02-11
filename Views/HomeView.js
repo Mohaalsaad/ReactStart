@@ -1,48 +1,17 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import {NavigationContainer} from '@react-navigation/native';
 
-
-function App() {
-  let [satate, setSatate] = useState("Hello");
-
-  let handleClike = () => {
-    setSatate("Hello world");
-  };
-
-  const [Enable, setEnable] = useState("courses");
-
+const HomeView = ({navigation}) => {
   return (
-   <NavigationContainer>
-      <View style={styles.container}>
-      <Text 
-      style={styles.title}>Mohammed Alsaad, {satate}</Text>
-      <TouchableOpacity
-      style={styles.buttonStyle}
-      onPress={handleClike}
-      >
-        <Text>
-          Change
-        </Text>
-      </TouchableOpacity>
-    
-      <Text style={styles.title}>Your Selection is: </Text>
-      <Text style={styles.selctionTilte}>{Enable}</Text>
-    </View>
-   </NavigationContainer>
+    <Button
+      title="Go to Jane's profile"
+      onPress={() =>
+        navigation.navigate("SecondView")
+      }
+    />
   );
-}
-
-function ProfileScreen({ route }) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Profile Screen</Text>
-      <Text>Name: {route.params.name}</Text>
-    </View>
-  );
-}
-
+};
 
 
 const styles = StyleSheet.create({
@@ -67,4 +36,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default App;
+export default HomeView;
