@@ -42,7 +42,6 @@ function App() {
   );
 }
 
-
 const style = StyleSheet.create({
   container:{
     flex: 1, 
