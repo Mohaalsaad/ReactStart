@@ -19,7 +19,6 @@ function HomeScreen({ navigation }) {
   );
 }
 
-
 function NewScreen({navigation}){
   return(
     <View>
