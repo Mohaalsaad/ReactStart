@@ -31,7 +31,6 @@ function NewScreen({navigation}){
   );
 };
 
-
 function App() {
   return (
     <NavigationContainer>
