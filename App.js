@@ -18,7 +18,6 @@ function HomeScreen({ navigation }) {
     </View>
   );
 }
-eiurgyeirughieugrhf
 function NewScreen({navigation}){
   return(
     <View>
