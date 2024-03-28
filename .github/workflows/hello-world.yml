@@ -1,22 +1,9 @@
-name: Build JavaScript Application
+name: Hello World
 on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Install Dependencies
-        run: npm install  # Assuming your JavaScript project uses npm for dependency management
-
-      - name: Build JavaScript Application
-        run: npm run build  # Assuming your JavaScript project has a build script defined in package.json
-
-      - name: Check Build Status
-        run: |
-          if [ $? -ne 0 ]; then
-            echo "Build failed. Please check your code and try again."
-            exit 1
-          fi
+      - name: Print Message
+        run: echo "Hello, GitHub Actions!"
